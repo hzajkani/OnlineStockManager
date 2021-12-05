@@ -47,8 +47,13 @@ public class ProductServiceImpl implements ProductService {
     public Integer buyProduct(Integer productId, Integer count) {
         Integer currentCapacity = ptoductRespository.findProductByProductId(productId).getCapacity();
         if (currentCapacity >= count) {
-            ptoductRespository.findProductByProductId(productId).setCapacity(currentCapacity - count);
+            Product product = ptoductRespository.findProductByProductId(productId);
+            product.setCapacity(currentCapacity - count);
+            ptoductRespository.save(product);
+        } else {
+            //todo prompt "capacity its not enough"
         }
+
         return ptoductRespository.findProductByProductId(productId).getCapacity();
     }
 }
