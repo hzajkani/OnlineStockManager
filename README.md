@@ -8,32 +8,32 @@ This project was Done with spring boot and MySql DB
 
 ###
 
-PUT http://localhost:8080/buy
+PUT http://localhost:8080/stock/buy
 
 ###
 
-DELETE http://localhost:8080/deleteProduct/{{productId}}
+DELETE http://localhost:8080/stock/deleteProduct/{{productId}}
 
 ###
 
-GET http://localhost:8080/findAll
+GET http://localhost:8080/stock/findAll
 
 ###
 
-GET http://localhost:8080/geProductById/{{productId}}
+GET http://localhost:8080/stock/geProductById/{{productId}}
 
 ###
 
-GET http://localhost:8080/getStockCapacity/{{productId}}
+GET http://localhost:8080/stock/getStockCapacity/{{productId}}
 
 ###
 
-PUT http://localhost:8080/refill
+PUT http://localhost:8080/stock/refill
 
 ###
 
-POST http://localhost:8080/saveProduct
+POST http://localhost:8080/stock/saveProduct
 
 ###
 
-PUT http://localhost:8080/updateProduct
+PUT http://localhost:8080/stock/updateProduct
