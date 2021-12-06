@@ -64,7 +64,7 @@ public class ProductController {
      */
     @PutMapping("/refill")
     public ResponseEntity<Product> refillProductStock(@Valid @RequestBody ProductDTO productDTO) {
-        productService.updateProduct(productDTO.toEntity());
+        productService.updateProduct(productDTO.getProductId(), productDTO.toEntity());
         return new ResponseEntity<>(productDTO.toEntity(), HttpStatus.OK);
     }
 
@@ -113,7 +113,7 @@ public class ProductController {
      */
     @PutMapping("/updateProduct")
     public ResponseEntity<Product> updateProduct(@Valid @RequestBody ProductDTO productDTO) {
-        productService.updateProduct(productDTO.toEntity());
+        productService.updateProduct(productDTO.getProductId(), productDTO.toEntity());
         return new ResponseEntity<>(productDTO.toEntity(), HttpStatus.OK);
     }
 

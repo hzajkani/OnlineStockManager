@@ -1,8 +1,8 @@
 package com.manager.stock.services;
 
-import com.manager.stock.util.StockConfig;
 import com.manager.stock.entities.Product;
 import com.manager.stock.repositories.ProductRepository;
+import com.manager.stock.util.StockConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,8 +41,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateProduct(Product product) {
-        ptoductRespository.save(product);
+    public Product updateProduct(Integer productId, Product newProduct) {
+        Product previousProduct = ptoductRespository.findProductByProductId(productId);
+        previousProduct.setProductName(newProduct.getProductName());
+        previousProduct.setCapacity(newProduct.getCapacity());
+        previousProduct.setProductDescription(newProduct.getProductDescription());
+        return ptoductRespository.save(previousProduct);
     }
 
     @Override

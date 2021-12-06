@@ -11,11 +11,11 @@ public interface ProductService {
 
     List<Product> getAllProduct();
 
-    Product findProductById(Integer id);
+    Product findProductById(Integer productId);
 
-    Product deleteProductById(Integer id);
+    Product deleteProductById(Integer productId);
 
-    void updateProduct(Product product);
+    Product updateProduct(Integer productId , Product newProduct);
 
     Integer buyProduct(Integer productId, Integer count);
 
