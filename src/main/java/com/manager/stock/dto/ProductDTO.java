@@ -1,3 +1,8 @@
+/**
+ * This DTO is for ProductDTO to prevent Domain Entity represent straightly to clients
+ *
+ * @author Hamid Zajkani
+ */
 package com.manager.stock.dto;
 
 import com.manager.stock.entities.Product;

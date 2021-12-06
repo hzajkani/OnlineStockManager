@@ -1,3 +1,8 @@
+/**
+ * Product Entity
+ *
+ * @author Hamid Zajkani
+ */
 package com.manager.stock.entities;
 
 import javax.persistence.*;

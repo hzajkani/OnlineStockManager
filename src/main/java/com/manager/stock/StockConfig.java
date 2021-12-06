@@ -1,3 +1,8 @@
+/**
+ * This Class is for reading properties in Application that we don't want to Hard Coded in program.
+ *
+ * @author Hamid Zajkani
+ */
 package com.manager.stock;
 
 import org.springframework.beans.factory.annotation.Value;

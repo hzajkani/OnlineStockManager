@@ -1,3 +1,9 @@
+/**
+ * This Class Represent Rest API for Product
+ *
+ * @author Hamid Zajkani
+ */
+
 package com.manager.stock.controller;
 
 import com.manager.stock.dto.BuyStockDTO;
@@ -18,36 +24,68 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    //	2.	Ask the whole product information
+    /**
+     * This is a method that fetches all Product entities in a List.
+     *
+     * @return List<Product>
+     */
     @GetMapping("/findAll")
     public List<Product> findAll() {
         return productService.getAllProduct();
     }
 
+    /**
+     * This is a method that get one Product details by ProductId.
+     *
+     * @param productId
+     * @return ResponseEntity<Product>
+     */
     @GetMapping("/geProductById/{productId}")
     public ResponseEntity<Product> getProductById(@PathVariable("productId") Integer productId) {
         return new ResponseEntity<>(productService.findProductById(productId), HttpStatus.OK);
     }
 
-    //	3.	Ask the stock of a product
+    /**
+     * This is a method for get a Stock Capacity on a specific Product by ProductId.
+     *
+     * @param productId
+     * @return Integer stockCapacity
+     */
     @GetMapping("/getStockCapacity/{productId}")
     public Integer getStockCapacity(@PathVariable("productId") Integer productId) {
         return new Integer(productService.findProductById(productId).getCapacity());
     }
 
-    //	4.	Refill the product stock
+    /**
+     * This is a method for refill a Product.
+     *
+     * @param productDTO
+     * @return ResponseEntity<Product>
+     */
     @PutMapping("/refill")
     public ResponseEntity<Product> refillProductStock(@Valid @RequestBody ProductDTO productDTO) {
         productService.updateProduct(productDTO.toEntity());
         return new ResponseEntity<>(productDTO.toEntity(), HttpStatus.OK);
     }
 
-    //	5.	Buying the product decreases the stock
+
+    /**
+     * Buying the product decreases the stock.
+     *
+     * @param buyStockDTO
+     * @return Integer result Capacity
+     */
     @PutMapping("/buy")
     public Integer buyProduct(@RequestBody BuyStockDTO buyStockDTO) {
         return productService.buyProduct(buyStockDTO.getProductId(), buyStockDTO.getCount());
     }
 
+    /**
+     * a Post method for creates Product
+     *
+     * @param productDTO
+     * @return HttpStatus
+     */
     @PostMapping("/saveProduct")
     public HttpStatus createProduct(@Valid @RequestBody ProductDTO productDTO) {
         productService.saveProduct(productDTO.toEntity());
@@ -55,12 +93,24 @@ public class ProductController {
 
     }
 
+    /**
+     * a  method for Delete a Product
+     *
+     * @param productId
+     * @return ResponseEntity<Product>
+     */
     @DeleteMapping("/deleteProduct/{productId}")
     public ResponseEntity<Product> deleteProduct(@PathVariable("productId") Integer productId) {
         productService.deleteProductById(productId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    /**
+     * a  method for Update a Product
+     *
+     * @param productDTO
+     * @return ResponseEntity<Product>
+     */
     @PutMapping("/updateProduct")
     public ResponseEntity<Product> updateProduct(@Valid @RequestBody ProductDTO productDTO) {
         productService.updateProduct(productDTO.toEntity());

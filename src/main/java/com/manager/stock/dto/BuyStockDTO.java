@@ -1,3 +1,9 @@
+/**
+ * This DTO is for Buying Stock
+ *
+ * @author Hamid Zajkani
+ */
+
 package com.manager.stock.dto;
 
 public class BuyStockDTO {
