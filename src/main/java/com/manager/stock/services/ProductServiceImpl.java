@@ -2,7 +2,7 @@ package com.manager.stock.services;
 
 import com.manager.stock.StockConfig;
 import com.manager.stock.entities.Product;
-import com.manager.stock.repositories.ProductRepositories;
+import com.manager.stock.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,16 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    ProductRepositories ptoductRespository;
+    ProductRepository ptoductRespository;
 
     @Autowired
     StockConfig stockConfig;
 
-    public void saveProduct(Product product) {
-        product.setCapacity(Integer.parseInt((stockConfig.getStockInitialSize())));
-        ptoductRespository.save(product);
+    public Product saveProduct(Product product) {
+        if (stockConfig != null) {
+            product.setCapacity(Integer.parseInt((stockConfig.getStockInitialSize())));
+        }
+        return ptoductRespository.save(product);
     }
 
     @Override

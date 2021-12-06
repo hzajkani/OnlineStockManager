@@ -9,11 +9,22 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
     private String productName;
     private String productDescription;
     private Integer capacity;
+
+
+    public Product() {
+    }
+
+    public Product(Integer productId, String productName, String productDescription, Integer capacity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.capacity = capacity;
+    }
 
 
     public Integer getProductId() {
