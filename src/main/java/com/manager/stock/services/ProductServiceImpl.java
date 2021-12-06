@@ -1,6 +1,6 @@
 package com.manager.stock.services;
 
-import com.manager.stock.StockConfig;
+import com.manager.stock.util.StockConfig;
 import com.manager.stock.entities.Product;
 import com.manager.stock.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

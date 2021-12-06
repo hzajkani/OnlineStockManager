@@ -3,7 +3,7 @@
  *
  * @author Hamid Zajkani
  */
-package com.manager.stock;
+package com.manager.stock.util;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
